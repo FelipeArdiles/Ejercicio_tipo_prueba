@@ -12,7 +12,7 @@ while True:
     opc=int(input("Ingrese opción: "))
     os.system("cls")
     if opc==1:
-        print("registrar trabajador").title()
+        print("\tregistrar trabajador")
         nombre_apellido=input("Ingrese su nombre y apellido: ")
         cargo= int(input("ingrese cargo(1:CEO, 2:DESARROLLADOR, 3:ANALISTA): "))
         sueldo_bruto= int(input("Ingrese sueldo bruto: "))
@@ -24,7 +24,14 @@ while True:
         print("Trabajador registrado con éxito")
 
     elif opc==2:
-        pass
+        if len(trabajadores)==0:
+            print("No existen trabajadores registrados, ingrese a la opción 1")
+        else:
+            print("\tLISTA DE TRABAJADORES")
+            print("Trabajador\tcargo\tsueldo bruto\tdesc. salud\tdesc. AFP\tliquido")
+            for t in trabajadores:
+                print(f"{t[0]}\t{t[1]}\t{t[2]}\t\t\t{t[3]}\t\t{t[4]}\t\t{t[5]}")
+
     elif opc==3:
         pass
     else:
