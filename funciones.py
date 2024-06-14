@@ -1,4 +1,8 @@
 trabajadores=[]
+cargos=("CEO","DESARROLLO","ANALISTA")
+
+
+
 
 def opcion1():
     print("\tregistrar trabajador")
@@ -8,7 +12,7 @@ def opcion1():
     descuento_salud= int(0.07*sueldo_bruto)
     descuento_afp= int(0.12*sueldo_bruto)
     sueldo_liquido= sueldo_bruto-descuento_afp-descuento_salud
-    trabajador=[nombre_apellido,cargo,sueldo_bruto,descuento_salud,descuento_afp,sueldo_liquido]
+    trabajador=[nombre_apellido,cargos[cargo-1],sueldo_bruto,descuento_salud,descuento_afp,sueldo_liquido]
     trabajadores.append(trabajador)
     print("Trabajador registrado con éxito")
 
@@ -31,13 +35,13 @@ def opcion3():
         if opc2==4:
             with open("todos_trabajadores.txt","w", newline="\n") as archivo:
                 for t in trabajadores:
-                    texto= f"{t[0]} {t[1]} {t[2]} {t[3]} {t[4]} {t[5]}"
+                    texto= f"Nombre: {t[0]} \nCargo: {t[1]} \nBruto: {t[2]} \ndesc. Salud: {t[3]} \nDesc. AFP: {t[4]} \nLiquido: {t[5]}"
                     archivo.write(texto)
             print("ARCHIVO CREADO CON ÉXITO!")
         else:
             with open ("trabajadores_por_cargo.txt","w") as archivo:
                 for t in trabajadores:
-                    if opc2==t[1]:
+                    if cargos[opc2-1]==t[1]:
                         texto= f"{t[0]} {t[1]} {t[2]} {t[3]} {t[4]} {t[5]}"
                         archivo.write(texto)
 
